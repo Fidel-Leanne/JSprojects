@@ -4,8 +4,9 @@
 <head></head>
 <body>
   <input id="todo-title" type="text"/>
+  <input id="date-picker" type="date">
     <button onclick="addTodo()">ADD TODO</button>
-    <div></div>
+    <div id="todoList"></div>
     <script>
         alert('hello welcome to your to do list')
         
@@ -14,23 +15,37 @@
         let todo3= 'sleep'
         let todo4= 'make dinner'
 
-       todos= ['grocery shopping', 'wash car', 'sleep','make dinner']
+       todos= [{title:'grocery shopping',
+      dueDate:'2022/11/11'}, 
+      { title:'wash car',
+    dueDate:'2022/12/11'}, 
+    {title:'sleep',
+  dueDate:'2011/1/12'},
+  {title:'make dinner',
+   dueDate:'2021/10/10'}]
       
-      
+      render();
       
     function addTodo(){
     let textbox= document.getElementById('todo-title')
     let title= textbox.value
+
+    const datePicker= document.getElementById('date-picker')
+    const dueDate =datePicker.value;
     todos.push(title)
 
     render();
     }
         
     function render(){
-      todos.forEach(function (TodoTitle){
-      let element = document.createElement('div');
-        element.innerText= TodoTitle;
-        document.body.appendChild(element);});
+      document.getElementById('todoList').innerHTML='';
+
+      todos.forEach(function (todo){
+
+      const element = document.createElement('div');
+        element.innerText= todo.title+' '+todo.dueDate;
+        const todoList=document.getElementById('todoList');
+        todoList.appendChild(element);});
      
     }
 
