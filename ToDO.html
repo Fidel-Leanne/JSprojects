@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+<body>
+  <input id="todo-title" type="text"/>
+    <button onclick="addTodo()">ADD TODO</button>
+    <div></div>
+    <script>
+        alert('hello welcome to your to do list')
+        
+        let todo1= 'grocery shopping'
+        let todo2= 'wash car '
+        let todo3= 'sleep'
+        let todo4= 'make dinner'
+
+       todos= ['grocery shopping', 'wash car', 'sleep','make dinner']
+      
+      
+      
+    function addTodo(){
+    let textbox= document.getElementById('todo-title')
+    let title= textbox.value
+    todos.push(title)
+
+    render();
+    }
+        
+    function render(){
+      todos.forEach(function (TodoTitle){
+      let element = document.createElement('div');
+        element.innerText= TodoTitle;
+        document.body.appendChild(element);});
+     
+    }
+
+   
+   
+      
+    </script>
+</body>
+</html>
