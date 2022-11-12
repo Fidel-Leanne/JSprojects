@@ -2,7 +2,8 @@
 <html>
 
 <head></head>
-<body>
+<body style="background-image: url(snowBackground.jpg);
+  background-repeat: no-repeat; background-size: cover ; height: 100vh; width: 100vh;">
   <input id="todo-title" type="text"/>
   <input id="date-picker" type="date">
     <button onclick="addTodo()">ADD TODO</button>
@@ -27,12 +28,15 @@
       render();
       
     function addTodo(){
-    let textbox= document.getElementById('todo-title')
-    let title= textbox.value
+    const textbox= document.getElementById('todo-title')
+    const title= textbox.value
 
     const datePicker= document.getElementById('date-picker')
     const dueDate =datePicker.value;
-    todos.push(title)
+    todos.push({
+      title:title,
+      dueDate: dueDate
+    })
 
     render();
     }
@@ -40,13 +44,21 @@
     function render(){
       document.getElementById('todoList').innerHTML='';
 
+   
       todos.forEach(function (todo){
 
       const element = document.createElement('div');
         element.innerText= todo.title+' '+todo.dueDate;
+        element.style= 'font-weight: bold; font-size: 20px; font-style: Arial; color: navy-blue;'
+        const deleteButton = document.createElement('button')
+        deleteButton.innerText= 'delete'
+        deleteButton.style='margin-left: 10px ; font-size: 20px;'
+        element.appendChild(deleteButton)
+
+
         const todoList=document.getElementById('todoList');
         todoList.appendChild(element);});
-     
+      
     }
 
    
